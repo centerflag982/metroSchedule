@@ -27,7 +27,8 @@ public class UserInteraction {
         Scanner scanner = new Scanner(System.in);
         outputInstance.displayOutput("Please enter the number of your current station:");
         int userStationIndex = Integer.parseInt(scanner.nextLine()) - 1;
-        String userStationName = stationList.get(0).getStopName();
+        Stop userStation = stationList.get(userStationIndex);
+        String userStationName = userStation.getStopName();
         scanner.close();
         return userStationName;
     }
@@ -36,12 +37,11 @@ public class UserInteraction {
         LocalTime currentTime = LocalTime.now();
 
         for (String arrTime : arrivalTimes){
-            int arrivalHour = Integer.parseInt(arrTime.substring(0,2));
-            int arrivalMinute = Integer.parseInt(arrTime.substring(3,5));
-            if (arrivalHour >= currentTime.getHour()){
-                int hoursTillArrival = arrivalHour - currentTime.getHour();
-                int minutesTillArrival = arrivalMinute - currentTime.getMinute() + (hoursTillArrival * 60);
-                outputInstance.displayOutput(minutesTillArrival + " minutes until next train arrives.");
+            int arrivalAbsoluteMinutes = (Integer.parseInt(arrTime.substring(0,2)) * 60) + Integer.parseInt(arrTime.substring(3,5)); //converts time into minutes since beginning of day
+            int currentAbsoluteMinutes = (currentTime.getHour() * 60) + currentTime.getMinute(); //converts time into minutes since beginning of day
+            if (arrivalAbsoluteMinutes >= currentAbsoluteMinutes){
+                int minutesTillArrival = arrivalAbsoluteMinutes - currentAbsoluteMinutes;
+                outputInstance.displayOutput(minutesTillArrival + " minutes until next train arrives (" + arrTime + ").");
                 //outputInstance.displayOutput(hoursTillArrival + " hours and " + minutesTillArrival + " minutes until next train arrives.");
                 break;
             }

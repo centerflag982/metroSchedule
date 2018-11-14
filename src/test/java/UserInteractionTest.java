@@ -9,7 +9,7 @@ public class UserInteractionTest {
     @Test
     public void getNextArrivalDoesntExplode(){
         List<String> testList = new ArrayList<>();
-        testList.add("21:59:00");
+        testList.add("19:28:00");
 
         UserInteraction uiTest = new UserInteraction();
         uiTest.getNextArrival(testList);

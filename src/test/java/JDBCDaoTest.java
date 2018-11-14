@@ -1,13 +1,12 @@
+import com.centerflag982.metroSchedule.Stop;
 import com.centerflag982.metroSchedule.dao.JDBCDao;
 import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
 
 public class JDBCDaoTest {
 
@@ -26,8 +25,14 @@ public class JDBCDaoTest {
     }
 
     @Test
-    public void somethingHappens(){
-        //not sure what I meant to replace this with
+    public void stationListRetrieved(){
+        List<Stop> testList;
+        JDBCDao testDao = new JDBCDao();
+
+        testList = testDao.getStationList();
+
+        assertNotNull(testList);
+
     }
 
 }

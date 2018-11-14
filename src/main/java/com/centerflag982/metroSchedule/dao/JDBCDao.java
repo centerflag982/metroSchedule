@@ -48,7 +48,6 @@ public class JDBCDao implements MetroDao {
     }
 
     public List<String> getArrivalTimes (String stationName){
-
         String serviceString;
         LocalDate date = LocalDate.now();
         DayOfWeek day = date.getDayOfWeek();
@@ -64,8 +63,8 @@ public class JDBCDao implements MetroDao {
         }
 
         try (Connection connection = getConnection()){
-            PreparedStatement arrivalTimeQuery = connection.prepareStatement("SELECT arrival_time FROM metrolink_stops" +
-                    "WHERE stop_name = " + stationName + " AND service_id = " + serviceString + " ORDER BY arrival_time ASC");
+            PreparedStatement arrivalTimeQuery = connection.prepareStatement("SELECT arrival_time FROM metrolink_stops WHERE stop_name = \"" +
+                    stationName + "\" AND service_id = \"" + serviceString + "\" ORDER BY arrival_time ASC");
             ResultSet arrivalTimeResults = arrivalTimeQuery.executeQuery();
             List<String> arrivalTimes = new ArrayList<>();
             while (arrivalTimeResults.next()){

@@ -29,8 +29,8 @@ public class Main {
     private void run(){
         List<Stop> stationList = daoInstance.getStationList();
         uiInstance.listStations(stationList);
-        String userStation = uiInstance.getUserStation(stationList);
-        List<String> arrivalTimes = daoInstance.getArrivalTimes(userStation);
+        String userStationName = uiInstance.getUserStation(stationList);
+        List<String> arrivalTimes = daoInstance.getArrivalTimes(userStationName);
         uiInstance.getNextArrival(arrivalTimes);
     }
 
