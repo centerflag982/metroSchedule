@@ -7,12 +7,13 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
-@Component("uiInstance")
+@Component ("uiInstance")
 public class UserInteraction {
 
-    //@Autowired
-    //private AppOutput outputInstance;
-    private AppOutput outputInstance = new ConsoleOutput();
+    @Autowired
+    private AppOutput outputInstance;
+    //For test class:
+    //private AppOutput outputInstance = new ConsoleOutput();
 
     void listStations(List<Stop> stationList){
         outputInstance.displayOutput("Listing all MetroLink stations:");

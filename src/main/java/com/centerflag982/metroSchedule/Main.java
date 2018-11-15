@@ -8,21 +8,21 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component ("MainInstance")
+@Component ("mainInstance")
 public class Main {
 
-    //@Autowired
-    //private UserInteraction uiInstance;
-    private UserInteraction uiInstance = new UserInteraction();
+    @Autowired
+    private UserInteraction uiInstance;
+    //private UserInteraction uiInstance = new UserInteraction();
 
-    //@Autowired
-    //private MetroDao daoInstance;
-    private MetroDao daoInstance = new JDBCDao();
+    @Autowired
+    private MetroDao daoInstance;
+    //private MetroDao daoInstance = new JDBCDao();
 
     public static void main (String [] args){
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 
-        Main mainInst = (Main) context.getBean("MainInstance");
+        Main mainInst = (Main) context.getBean("mainInstance");
         mainInst.run();
     }
 

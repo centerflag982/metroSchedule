@@ -7,7 +7,7 @@ import java.util.List;
 public class UserInteractionTest {
 
     @Test
-    public void getNextArrivalDoesntExplode(){
+    public void getNextArrivalDoesntExplode(){ //Breaks if output is instantiated via spring, change at line 16 to test
         List<String> testList = new ArrayList<>();
         testList.add("19:28:00");
 

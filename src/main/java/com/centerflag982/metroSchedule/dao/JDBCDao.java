@@ -2,7 +2,7 @@ package com.centerflag982.metroSchedule.dao;
 
 import com.centerflag982.metroSchedule.Stop;
 import com.centerflag982.metroSchedule.MetroDao;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.DayOfWeek;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("daoInstance")
+@Repository ("daoInstance")
 public class JDBCDao implements MetroDao {
     private static final String JDBC_SQLITE_METROLINK_DB = "jdbc:sqlite:metrolink.db";
     private static final String ORG_SQLITE_JDBC = "org.sqlite.JDBC";
